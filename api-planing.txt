@@ -1,0 +1,103 @@
+Standard API
+
+{root.api}/{version}/{grouping}/{endpoint}
+SAMPLE:
+http://mern-api.ial.com/v1/auth/login
+
+
+Standard Status Response
+
+200 - OK                    --> Call ApI Success
+201 - CREATED               --> Post Success
+400 - BAD REQUEST           --> Error on Client Side (Penginputan Salah)
+401 - UNAUTHORIZED          --> User not Authorized to the REQUEST
+403 - FORBIDDEN             --> User not Allowed to Access
+404 - NOT FOUND             --> Request End Point Not FOUND
+500 - INTERNAL SERVER ERROR --> Error on Server Side
+502 - BAD GATEWAY           --> Invalid Response From Another Request 
+
+GROUP : Authentication
+{
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    [1]Register
+    {root.api}/{version}/auth/register
+
+    req:
+    {
+        "name"     : "test",
+        "email"    : "test@gmail.com",
+        "password" : "123abc"
+    }
+
+    res:
+    {
+        "massege" : "Register Success",
+        "data": {
+            "id"       : 1,
+            "name"     : "test",
+            "email"    : "test@gmail.com",
+            "password" : "123abc"
+        }
+    }
+
+    err-response:
+    {
+        201 : Register Berhasil
+        400 : Input yang anda masukan salah 
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    [2] - Login
+    {root.api}/{version}/auth/login
+
+    req:
+
+    
+}
+
+GROUP : Blog
+{
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    [1] - Create Blog
+    [POST] : {root.api}/v1/blog/post
+
+    req :
+    {
+        "title" : "title blog",
+        "image" : "www.png",
+        "body"  : "sajhdjgsajdajbsaj"
+    }
+
+     res:
+    {
+        "massege" : "Create Blog Success",
+        "data": {
+            "post_id"       : 1,
+            "title"         : "title blog",
+            "image"         : "www.png",
+            "body"          : "sajhdjgsajdajbsaj"
+            "created_at"    : "23/10/2021"
+            "author" : {
+                "uid"   : 1,
+                "name"  : "simbadu"
+            }
+        }
+    }
+
+      err-response:
+    {
+        201 : Register Berhasil
+        400 : Input yang anda masukan salah 
+    }
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    [2] - GET Blog
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    [3] - UPDATE Blog
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    [4] - DELETE Blog
+}
